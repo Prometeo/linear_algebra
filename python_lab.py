@@ -13,7 +13,7 @@ minutes_in_week = 60*24*7
 
 ## 2: (Task 2) Remainder
 #For this task, your expression must use //
-remainder_without_mod = 25
+remainder_without_mod = 2304811 - (2304811 // 47) * 47
 
 
 
@@ -80,40 +80,39 @@ cartesian_product = [[x]+[y] for x in ['A','B', 'C'] for y in [1, 2, 3]]
 LofL = [[.25, .75, .1], [-1, 0], [4, 4, 4, 4]]
 # Replace ... with a one-line expression of the form sum([sum(...) ... ]) that
 # includes a comprehension and evaluates to the sum of all numbers in all the lists.
-LofL_sum = ...
+LofL_sum = sum([sum(x for x in sum([[.25, .75, .1],[-1, 0],[4, 4, 4, 4]],[]))]) 
 
 
 
 ## 13: (Task 13) Three-element tuples summing to zero
 S = {-4, -2, 1, 2, 5, 0}
 # Replace [ ... ] with a one-line list comprehension in which S appears
-zero_sum_list = [ ... ] 
+zero_sum_list =[ (i, j, k) for i in S for j in S for k in S if i + j + k == 0 ] 
 
 
 
 ## 14: (Task 14) Nontrivial three-element tuples summing to zero
 S = {-4, -2, 1, 2, 5, 0}
 # Replace [ ... ] with a one-line list comprehension in which S appears
-exclude_zero_list = [ ... ]
+exclude_zero_list = exclude_zero_list = [ (x, y, z) for x in S for y in S for z in S if x + y + z == 0 and not (x == 0 and y == 0 and z == 0) ]
 
 
 
 ## 15: (Task 15) One nontrivial three-element tuple summing to zero
 S = {-4, -2, 1, 2, 5, 0}
 # Replace ... with a one-line expression that uses a list comprehension in which S appears
-first_of_tuples_list = ...
+first_of_tuples_list = [ (x, y, z) for x in S for y in S for z in S if x + y + z == 0 and not (x == 0 and y == 0 and z == 0) ][0]
 
 
 
 ## 16: (Task 16) List and set differ
 # Assign to example_L a list such that len(example_L) != len(list(set(example_L)))
-example_L = [...]
-
+example_L = [5, 6, 7, 5]
 
 
 ## 17: (Task 17) Odd numbers
 # Replace {...} with a one-line set comprehension over a range of the form range(n)
-odd_num_list_range = {...}
+odd_num_list_range = {x for x in range(101) if x % 2 != 0}
 
 
 
@@ -121,7 +120,8 @@ odd_num_list_range = {...}
 # In the line below, replace ... with an expression that does not include a comprehension.
 # Instead, it should use zip and range.
 # Note: zip() does not return a list. It returns an 'iterator of tuples'
-range_and_zip = ...
+L = ['A','B','C','D','E']
+range_and_zip = list(zip(list(range(5)), L))
 
 
 
@@ -131,7 +131,8 @@ B = [1, 15, 20]
 # Replace [...] with a one-line comprehension that uses zip together with the variables A and B.
 # The comprehension should evaluate to a list whose ith element is the ith element of
 # A plus the ith element of B.
-list_sum_zip = [...]
+
+list_sum_zip = [ x + y for (x, y) in zip(A, B)]
 
 
 
@@ -140,7 +141,7 @@ dlist = [{'James':'Sean', 'director':'Terence'}, {'James':'Roger', 'director':'L
 k = 'James'
 # Replace [...] with a one-line comprehension that uses dlist and k
 # and that evaluates to ['Sean','Roger','Pierce']
-value_list = [...]
+value_list = [x[k] for x in dlist]
 
 
 
@@ -148,9 +149,9 @@ value_list = [...]
 dlist = [{'Bilbo':'Ian','Frodo':'Elijah'},{'Bilbo':'Martin','Thorin':'Richard'}]
 k = 'Bilbo'
 #Replace [...] with a one-line comprehension 
-value_list_modified_1 = [...] # <-- Use the same expression here
+value_list_modified_1 = [x[k] if k in x else 'NOT PRESENT' for x in dlist]  # <-- Use the same expression here
 k = 'Frodo'
-value_list_modified_2 = [...] # <-- as you do here
+value_list_modified_2 = [x[k] if k in x else 'NOT PRESENT' for x in dlist] # <-- as you do here
 
 
 
